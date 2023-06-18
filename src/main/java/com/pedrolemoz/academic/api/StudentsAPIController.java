@@ -1,4 +1,4 @@
-package com.pedrolemoz.academic.controllers;
+package com.pedrolemoz.academic.api;
 
 import com.pedrolemoz.academic.dtos.StudentDTO;
 import com.pedrolemoz.academic.models.StudentModel;
@@ -21,10 +21,10 @@ import java.util.UUID;
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/students")
-public class StudentsController {
+public class StudentsAPIController {
     final StudentsService studentsService;
 
-    public StudentsController(StudentsService studentsService) {
+    public StudentsAPIController(StudentsService studentsService) {
         this.studentsService = studentsService;
     }
 
