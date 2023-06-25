@@ -1,0 +1,125 @@
+<div th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Sistema Acadêmico</a>
+        <button
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          class="navbar-toggler"
+          data-bs-target="#navbarSupportedContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                aria-expanded="false"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+              >
+                Cursos
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/courses/create_new_course"
+                    >Criar novo curso</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/courses/list_all_courses"
+                    >Listar todos os cursos</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <!--  -->
+            <li class="nav-item dropdown">
+              <a
+                aria-expanded="false"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+              >
+                Disciplinas
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="/disciplines/create_new_discipline"
+                    >Criar nova disciplina</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="/disciplines/list_all_disciplines"
+                    >Listar todas as disciplinas</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <!--  -->
+            <li class="nav-item dropdown">
+              <a
+                aria-expanded="false"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+              >
+                Professores
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/teachers/create_new_teacher"
+                    >Criar novo professor</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/teachers/list_all_teachers"
+                    >Listar todos os professores</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <!--  -->
+            <li class="nav-item dropdown">
+              <a
+                aria-expanded="false"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+              >
+                Alunos
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/students/create_new_student"
+                    >Criar novo aluno</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/students/list_all_students"
+                    >Listar todos os alunos</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <!--  -->
+          </ul>
+        </div>
+        <!--  -->
+      </div>
+    </nav>
+  </header>
+</div>

@@ -5,16 +5,13 @@ import com.pedrolemoz.academic.models.StudentModel;
 import com.pedrolemoz.academic.services.StudentsService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -43,9 +40,8 @@ public class StudentsAPIController {
     }
 
     @GetMapping("/get_all")
-    public ResponseEntity<Page<StudentModel>> getAllStudents(
-            @PageableDefault(page = 0, size = 50, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
-        return ResponseEntity.status(HttpStatus.OK).body(studentsService.findAll(pageable));
+    public ResponseEntity<List<StudentModel>> getAllStudents() {
+        return ResponseEntity.status(HttpStatus.OK).body(studentsService.findAll());
     }
 
     @GetMapping("/get_by_id")

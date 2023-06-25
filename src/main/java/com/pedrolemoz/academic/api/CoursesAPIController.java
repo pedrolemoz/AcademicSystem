@@ -6,22 +6,19 @@ import com.pedrolemoz.academic.models.DisciplineModel;
 import com.pedrolemoz.academic.services.CoursesService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/courses")
+@RequestMapping("/courses2")
 public class CoursesAPIController {
     final CoursesService coursesService;
 
@@ -38,9 +35,8 @@ public class CoursesAPIController {
     }
 
     @GetMapping("/get_all")
-    public ResponseEntity<Page<CourseModel>> getAllCourses(
-            @PageableDefault(page = 0, size = 50, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
-        return ResponseEntity.status(HttpStatus.OK).body(coursesService.findAll(pageable));
+    public ResponseEntity<List<CourseModel>> getAllCourses() {
+        return ResponseEntity.status(HttpStatus.OK).body(coursesService.findAll());
     }
 
     @GetMapping("/get_by_id")

@@ -29,4 +29,13 @@ public class CourseModel {
 
     @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
     private List<DisciplineModel> disciplines;
+
+    public String getDegreeAsString() {
+        return switch (this.degree) {
+            case Bachelor -> "Bacharelado";
+            case Licentiate -> "Licenciatura";
+            case Master -> "Mestrado";
+            case Doctorate -> "Doutorado";
+        };
+    }
 }

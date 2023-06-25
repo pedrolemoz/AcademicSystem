@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <title>Sistema Acadêmico</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../index.html">Sistema Acadêmico</a>
+          <button
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-bs-target="#navbarSupportedContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  aria-expanded="false"
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                >
+                  Cursos
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/courses/create_new_course.html"
+                      >Criar novo curso</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/courses/list_all_courses.html"
+                      >Listar todos os cursos</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!--  -->
+              <li class="nav-item dropdown">
+                <a
+                  aria-expanded="false"
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                >
+                  Disciplinas
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/disciplines/create_new_discipline.html"
+                      >Criar nova disciplina</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/disciplines/list_all_disciplines.html"
+                      >Listar todas as disciplinas</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!--  -->
+              <li class="nav-item dropdown">
+                <a
+                  aria-expanded="false"
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                >
+                  Professores
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/teachers/create_new_teacher.html"
+                      >Criar novo professor</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/teachers/list_all_teachers.html"
+                      >Listar todos os professores</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!--  -->
+              <li class="nav-item dropdown">
+                <a
+                  aria-expanded="false"
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                >
+                  Alunos
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/students/create_new_student.html"
+                      >Criar novo aluno</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/students/list_all_students.html"
+                      >Listar todos os alunos</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!--  -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- BODY -->
+    <h3>Programação Orientada a Objetos</h3>
+    <h5>Semestre: 2023.1</h5>
+    <div class="justify-content-start d-flex">
+      <h6>Professor: Benjamin Arrola</h6>
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#editTeacherModal"
+      >
+        Editar
+      </button>
+    </div>
+    <div class="justify-content-start d-flex">
+      <h6>Curso: Ciência da Computação</h6>
+      <a class="btn btn-primary" role="button" href="#">Editar</a>
+    </div>
+    <div class="justify-content-start d-flex">
+      <h4>Alunos</h4>
+      <a class="btn btn-primary" role="button" href="#">Adicionar</a>
+    </div>
+    <ul class="list-group">
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
+          123.456.789-00
+        </div>
+
+        <a
+          class="btn btn-primary"
+          role="button"
+          href="/students/view_student.html"
+          >Visualizar</a
+        >
+        <a class="btn btn-primary" role="button" href="#">Editar</a>
+        <a class="btn btn-primary" role="button" href="#">Deletar</a>
+      </li>
+      <!--  -->
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
+          123.456.789-00
+        </div>
+
+        <a
+          class="btn btn-primary"
+          role="button"
+          href="/students/view_student.html"
+          >Visualizar</a
+        >
+        <a class="btn btn-primary" role="button" href="#">Editar</a>
+        <a class="btn btn-primary" role="button" href="#">Deletar</a>
+      </li>
+      <!--  -->
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
+          123.456.789-00
+        </div>
+
+        <a
+          class="btn btn-primary"
+          role="button"
+          href="/students/view_student.html"
+          >Visualizar</a
+        >
+        <a class="btn btn-primary" role="button" href="#">Editar</a>
+        <a class="btn btn-primary" role="button" href="#">Deletar</a>
+      </li>
+      <!--  -->
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
+          123.456.789-00
+        </div>
+
+        <a
+          class="btn btn-primary"
+          role="button"
+          href="/students/view_student.html"
+          >Visualizar</a
+        >
+        <a class="btn btn-primary" role="button" href="#">Editar</a>
+        <a class="btn btn-primary" role="button" href="#">Deletar</a>
+      </li>
+      <!--  -->
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
+          123.456.789-00
+        </div>
+
+        <a
+          class="btn btn-primary"
+          role="button"
+          href="/students/view_student.html"
+          >Visualizar</a
+        >
+        <a class="btn btn-primary" role="button" href="#">Editar</a>
+        <a class="btn btn-primary" role="button" href="#">Deletar</a>
+      </li>
+      <!--  -->
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
+          123.456.789-00
+        </div>
+
+        <a
+          class="btn btn-primary"
+          role="button"
+          href="/students/view_student.html"
+          >Visualizar</a
+        >
+        <a class="btn btn-primary" role="button" href="#">Editar</a>
+        <a class="btn btn-primary" role="button" href="#">Deletar</a>
+      </li>
+      <!--  -->
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
+          123.456.789-00
+        </div>
+
+        <a
+          class="btn btn-primary"
+          role="button"
+          href="/students/view_student.html"
+          >Visualizar</a
+        >
+        <a class="btn btn-primary" role="button" href="#">Editar</a>
+        <a class="btn btn-primary" role="button" href="#">Deletar</a>
+      </li>
+      <!--  -->
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
+          123.456.789-00
+        </div>
+
+        <a
+          class="btn btn-primary"
+          role="button"
+          href="/students/view_student.html"
+          >Visualizar</a
+        >
+        <a class="btn btn-primary" role="button" href="#">Editar</a>
+        <a class="btn btn-primary" role="button" href="#">Deletar</a>
+      </li>
+      <!--  -->
+      <li
+        class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
+          123.456.789-00
+        </div>
+
+        <a
+          class="btn btn-primary"
+          role="button"
+          href="/students/view_student.html"
+          >Visualizar</a
+        >
+        <a class="btn btn-primary" role="button" href="#">Editar</a>
+        <a class="btn btn-primary" role="button" href="#">Deletar</a>
+      </li>
+      <!--  -->
+    </ul>
+  </body>
+</html>

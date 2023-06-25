@@ -31,4 +31,11 @@ public class TeacherModel {
 
     @OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
     private List<DisciplineModel> disciplines;
+
+    public String getFormattedDocumentNumber() {
+        return documentNumber.substring(0, 3) + "."
+                + documentNumber.substring(3, 6) + "."
+                + documentNumber.substring(6, 9) + "-"
+                + documentNumber.substring(9);
+    }
 }

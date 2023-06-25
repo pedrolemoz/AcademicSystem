@@ -3,10 +3,9 @@ package com.pedrolemoz.academic.services;
 import com.pedrolemoz.academic.models.CourseModel;
 import com.pedrolemoz.academic.repositories.CoursesRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,8 +22,8 @@ public class CoursesService {
         return coursesRepository.save(courseModel);
     }
 
-    public Page<CourseModel> findAll(Pageable pageable) {
-        return coursesRepository.findAll(pageable);
+    public List<CourseModel> findAll() {
+        return coursesRepository.findAll();
     }
 
     public Optional<CourseModel> findById(UUID id) {
