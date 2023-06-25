@@ -40,6 +40,12 @@ public class AcademicSystemApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        var courses = coursesService.findAll();
+
+        if (!courses.isEmpty()) {
+            return;
+        }
+
         // Course
         var compSci = new CourseModel();
         compSci.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
