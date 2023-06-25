@@ -51,8 +51,8 @@ public class AcademicSystemApplication implements CommandLineRunner {
         var otavioAlcantaraDeLimaJunior = new TeacherModel();
         otavioAlcantaraDeLimaJunior.setName("OTAVIO ALCANTARA DE LIMA JUNIOR");
         otavioAlcantaraDeLimaJunior.setDocumentNumber("46524234545");
-        teacher.setBirthDate(LocalDateTime.now());
-        teacher.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        otavioAlcantaraDeLimaJunior.setBirthDate(LocalDateTime.now());
+        otavioAlcantaraDeLimaJunior.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         teachersService.save(otavioAlcantaraDeLimaJunior);
 
         var fabioJoseGomesDeSousa = new TeacherModel();
