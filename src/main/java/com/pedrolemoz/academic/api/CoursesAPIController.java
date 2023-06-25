@@ -18,7 +18,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/courses2")
+@RequestMapping("/courses")
 public class CoursesAPIController {
     final CoursesService coursesService;
 

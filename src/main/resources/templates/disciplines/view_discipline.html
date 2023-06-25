@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,147 +16,18 @@
     ></script>
     <title>Sistema Acadêmico</title>
   </head>
-  <body>
+  <body th:object="${discipline}">
     <!-- HEADER -->
-    <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../index.html">Sistema Acadêmico</a>
-          <button
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            class="navbar-toggler"
-            data-bs-target="#navbarSupportedContent"
-            data-bs-toggle="collapse"
-            type="button"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a
-                  aria-expanded="false"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                >
-                  Cursos
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/courses/create_new_course.html"
-                      >Criar novo curso</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/courses/list_all_courses.html"
-                      >Listar todos os cursos</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!--  -->
-              <li class="nav-item dropdown">
-                <a
-                  aria-expanded="false"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                >
-                  Disciplinas
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/disciplines/create_new_discipline.html"
-                      >Criar nova disciplina</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/disciplines/list_all_disciplines.html"
-                      >Listar todas as disciplinas</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!--  -->
-              <li class="nav-item dropdown">
-                <a
-                  aria-expanded="false"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                >
-                  Professores
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/teachers/create_new_teacher.html"
-                      >Criar novo professor</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/teachers/list_all_teachers.html"
-                      >Listar todos os professores</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!--  -->
-              <li class="nav-item dropdown">
-                <a
-                  aria-expanded="false"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                >
-                  Alunos
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/students/create_new_student.html"
-                      >Criar novo aluno</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/students/list_all_students.html"
-                      >Listar todos os alunos</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!--  -->
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+    <div th:replace="/header :: header"></div>
     <!-- BODY -->
-    <h3>Programação Orientada a Objetos</h3>
-    <h5>Semestre: 2023.1</h5>
+    <h3 data-th-text="${discipline.name}"></h3>
+    <h5
+      data-th-text="|Semestre: ${discipline.year}.${discipline.semester}|"
+    ></h5>
     <div class="justify-content-start d-flex">
-      <h6>Professor: Benjamin Arrola</h6>
+      <h6
+        data-th-text="|Professor: ${discipline.teacher != null ? discipline.teacher : 'Nenhum professor atribuído'}|"
+      ></h6>
       <button
         type="button"
         class="btn btn-primary"
@@ -167,176 +38,37 @@
       </button>
     </div>
     <div class="justify-content-start d-flex">
-      <h6>Curso: Ciência da Computação</h6>
+      <h6
+        data-th-text="|Curso: ${discipline.course != null ? discipline.course.name : 'Nenhum curso atribuído'}|"
+      ></h6>
       <a class="btn btn-primary" role="button" href="#">Editar</a>
     </div>
     <div class="justify-content-start d-flex">
       <h4>Alunos</h4>
       <a class="btn btn-primary" role="button" href="#">Adicionar</a>
     </div>
-    <ul class="list-group">
+    <h4 th:if="${discipline.students.isEmpty()}">Não há alunos para mostrar</h4>
+    <ul
+      class="list-group"
+      th:if="${!discipline.students.isEmpty()}"
+      data-th-each="student : ${discipline.students}"
+    >
       <li
         class="list-group-item d-flex justify-content-between align-items-start"
       >
         <div class="ms-2 me-auto">
-          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
-          123.456.789-00
+          <div class="fw-bold" data-th-text="${student.name}"></div>
+          <div data-th-text="${student.getFormattedDocumentNumber()}"></div>
         </div>
-
         <a
           class="btn btn-primary"
           role="button"
-          href="/students/view_student.html"
+          th:href="@{'/students/view_student/'+${student.id}}"
           >Visualizar</a
         >
         <a class="btn btn-primary" role="button" href="#">Editar</a>
         <a class="btn btn-primary" role="button" href="#">Deletar</a>
       </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
-          123.456.789-00
-        </div>
-
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/students/view_student.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
-          123.456.789-00
-        </div>
-
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/students/view_student.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
-          123.456.789-00
-        </div>
-
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/students/view_student.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
-          123.456.789-00
-        </div>
-
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/students/view_student.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
-          123.456.789-00
-        </div>
-
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/students/view_student.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
-          123.456.789-00
-        </div>
-
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/students/view_student.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
-          123.456.789-00
-        </div>
-
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/students/view_student.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Jacinto Pinto Aquino Rego</div>
-          123.456.789-00
-        </div>
-
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/students/view_student.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
     </ul>
   </body>
 </html>

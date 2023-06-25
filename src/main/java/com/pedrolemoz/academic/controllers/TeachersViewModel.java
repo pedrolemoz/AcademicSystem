@@ -48,7 +48,6 @@ public class TeachersViewModel {
             return modelAndView;
         }
 
-
         var teacherModel = new TeacherModel();
         BeanUtils.copyProperties(teacherDTO, teacherModel);
         teacherModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));

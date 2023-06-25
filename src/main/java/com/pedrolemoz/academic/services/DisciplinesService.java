@@ -3,10 +3,9 @@ package com.pedrolemoz.academic.services;
 import com.pedrolemoz.academic.models.DisciplineModel;
 import com.pedrolemoz.academic.repositories.DisciplinesRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,14 +22,14 @@ public class DisciplinesService {
         return disciplinesRepository.save(disciplineModel);
     }
 
-    public Page<DisciplineModel> findAll(Pageable pageable) {
-        return disciplinesRepository.findAll(pageable);
+    public List<DisciplineModel> findAll() {
+        return disciplinesRepository.findAll();
     }
 
     public Optional<DisciplineModel> findById(UUID id) {
         return disciplinesRepository.findById(id);
     }
-    
+
     public void delete(DisciplineModel disciplineModel) {
         disciplinesRepository.delete(disciplineModel);
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,246 +16,35 @@
     ></script>
     <title>Sistema Acadêmico</title>
   </head>
-
-  <body>
+  <body th:object="${disciplines}">
     <!-- HEADER -->
-    <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../index.html">Sistema Acadêmico</a>
-          <button
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            class="navbar-toggler"
-            data-bs-target="#navbarSupportedContent"
-            data-bs-toggle="collapse"
-            type="button"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a
-                  aria-expanded="false"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                  >Cursos
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/courses/create_new_course.html"
-                      >Criar novo curso
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/courses/list_all_courses.html"
-                      >Listar todos os cursos</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!--  -->
-              <li class="nav-item dropdown">
-                <a
-                  aria-expanded="false"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                >
-                  Disciplinas
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/disciplines/create_new_discipline.html"
-                      >Criar nova disciplina</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/disciplines/list_all_disciplines.html"
-                      >Listar todas as disciplinas</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!--  -->
-              <li class="nav-item dropdown">
-                <a
-                  aria-expanded="false"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                >
-                  Professores
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/teachers/create_new_teacher.html"
-                      >Criar novo professor</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/teachers/list_all_teachers.html"
-                      >Listar todos os professores</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!--  -->
-              <li class="nav-item dropdown">
-                <a
-                  aria-expanded="false"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                >
-                  Alunos
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/students/create_new_student.html"
-                      >Criar novo aluno</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/students/list_all_students.html"
-                      >Listar todos os alunos</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!--  -->
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+    <div th:replace="/header :: header"></div>
     <!-- BODY -->
-    <ul class="list-group">
+    <h4>Disciplinas</h4>
+    <h4 th:if="${disciplines.isEmpty()}">Não há disciplinas para mostrar</h4>
+    <ul
+      th:if="${!disciplines.isEmpty()}"
+      class="list-group"
+      data-th-each="discipline : ${disciplines}"
+    >
       <li
         class="list-group-item d-flex justify-content-between align-items-start"
       >
         <div class="ms-2 me-auto">
-          <div class="fw-bold">Programação Orientada a Objetos</div>
-          Semestre: 2023.1
+          <div class="fw-bold" data-th-text="${discipline.name}"></div>
+          <div
+            data-th-text="|Semestre: ${discipline.year}.${discipline.semester}|"
+          ></div>
         </div>
         <a
           class="btn btn-primary"
           role="button"
-          href="/disciplines/view_discipline.html"
+          th:href="@{'/disciplines/view_discipline/'+${discipline.id}}"
           >Visualizar</a
         >
         <a class="btn btn-primary" role="button" href="#">Editar</a>
         <a class="btn btn-primary" role="button" href="#">Deletar</a>
       </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Programação Orientada a Objetos</div>
-          Semestre: 2023.1
-        </div>
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/disciplines/view_discipline.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Programação Orientada a Objetos</div>
-          Semestre: 2023.1
-        </div>
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/disciplines/view_discipline.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Programação Orientada a Objetos</div>
-          Semestre: 2023.1
-        </div>
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/disciplines/view_discipline.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Programação Orientada a Objetos</div>
-          Semestre: 2023.1
-        </div>
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/disciplines/view_discipline.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Programação Orientada a Objetos</div>
-          Semestre: 2023.1
-        </div>
-        <a
-          class="btn btn-primary"
-          role="button"
-          href="/disciplines/view_discipline.html"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-      <!--  -->
     </ul>
   </body>
 </html>

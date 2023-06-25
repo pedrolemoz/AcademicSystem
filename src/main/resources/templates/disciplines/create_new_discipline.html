@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,142 +18,9 @@
   </head>
   <body>
     <!-- HEADER -->
-    <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../index.html">Sistema Acadêmico</a>
-          <button
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            class="navbar-toggler"
-            data-bs-target="#navbarSupportedContent"
-            data-bs-toggle="collapse"
-            type="button"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a
-                  aria-expanded="false"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                >
-                  Cursos
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/courses/create_new_course.html"
-                      >Criar novo curso</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/courses/list_all_courses.html"
-                      >Listar todos os cursos</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!--  -->
-              <li class="nav-item dropdown">
-                <a
-                  aria-expanded="false"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                >
-                  Disciplinas
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/disciplines/create_new_discipline.html"
-                      >Criar nova disciplina</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/disciplines/list_all_disciplines.html"
-                      >Listar todas as disciplinas</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!--  -->
-              <li class="nav-item dropdown">
-                <a
-                  aria-expanded="false"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                >
-                  Professores
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/teachers/create_new_teacher.html"
-                      >Criar novo professor</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/teachers/list_all_teachers.html"
-                      >Listar todos os professores</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!--  -->
-              <li class="nav-item dropdown">
-                <a
-                  aria-expanded="false"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                >
-                  Alunos
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/students/create_new_student.html"
-                      >Criar novo aluno</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="/students/list_all_students.html"
-                      >Listar todos os alunos</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <!--  -->
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+    <div th:replace="/header :: header"></div>
     <!-- BODY -->
-    <form>
+    <form action="/disciplines/create_new_discipline" method="POST">
       <div class="mb-3">
         <label class="form-label">Nome da disciplina</label>
         <input class="form-control" name="name" type="text" />
