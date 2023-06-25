@@ -18,11 +18,11 @@
   <div th:replace="/header :: header"></div>
   <!-- BODY -->
   <div class="container">
-    <h2 class="py-2">Cursos</h2>
+    <h2 class="py-2">Disciplinas</h2>
     <h4 class="py-2" th:if="${disciplines.isEmpty()}">Não há disciplinas para mostrar</h4>
     <div class="d-grid gap-2">
       <div class="container d-flex justify-content-between border rounded-2 p-2" th:if="${!disciplines.isEmpty()}"
-        data-th-each="course : ${courses}">
+        data-th-each="discipline : ${disciplines}">
         <div>
           <div class="ms-2 me-auto">
             <div class="fw-bold" data-th-text="${discipline.name}"></div>

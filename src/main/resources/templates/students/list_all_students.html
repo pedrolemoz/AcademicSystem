@@ -18,7 +18,7 @@
   <div th:replace="/header :: header"></div>
   <!-- BODY -->
   <div class="container">
-    <h2 class="py-2">Cursos</h2>
+    <h2 class="py-2">Estudantes</h2>
     <h4 class="py-2" th:if="${students.isEmpty()}">Não há estudantes para mostrar</h4>
     <div class="d-grid gap-2">
       <div class="container d-flex justify-content-between border rounded-2 p-2" th:if="${!students.isEmpty()}"
