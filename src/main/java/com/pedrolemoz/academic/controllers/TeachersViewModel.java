@@ -59,6 +59,44 @@ public class TeachersViewModel {
         return modelAndView;
     }
 
+    @GetMapping("/edit_existing_teacher/{id}")
+    public ModelAndView editExistingTeacherGetRequest(@PathVariable("id") UUID id) {
+        var modelAndView = new ModelAndView("/teachers/edit_existing_teacher");
+        Optional<TeacherModel> teacherModelOptional = teachersService.findById(id);
+
+        if (teacherModelOptional.isPresent()) {
+            modelAndView.addObject("teacher", teacherModelOptional.get());
+        } else {
+            modelAndView.setViewName("/error");
+            modelAndView.addObject("errorMessage", "Professor não encontrado");
+        }
+
+        return modelAndView;
+    }
+
+    @PostMapping("/edit_existing_teacher")
+    public ModelAndView editExistingTeacherPostRequest(TeacherDTO teacherDTO) {
+        ModelAndView modelAndView = new ModelAndView("/teachers/list_all_teachers");
+
+        if (!teachersService.existsByDocumentNumber(teacherDTO.getDocumentNumber())) {
+            modelAndView.setViewName("/error");
+            modelAndView.addObject("errorMessage", "Não existe um professor cadastrado com este CPF");
+            return modelAndView;
+        }
+
+        var teacherModel = new TeacherModel();
+        teacherModel.setId(teacherDTO.getUUID());
+        BeanUtils.copyProperties(teacherDTO, teacherModel);
+        teacherModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        teachersService.save(teacherModel);
+
+        var teachers = teachersService.findAll();
+        modelAndView.addObject("teachers", teachers);
+
+        return modelAndView;
+    }
+
+
     @GetMapping("/view_teacher/{id}")
     public ModelAndView viewTeacherGetRequest(@PathVariable("id") UUID id) {
         ModelAndView modelAndView = new ModelAndView("/teachers/view_teacher");

@@ -48,7 +48,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
 
         // Course
         var compSci = new CourseModel();
-        compSci.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        compSci.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         compSci.setName("CIÊNCIA DA COMPUTAÇÃO");
         compSci.setDegree(Degree.Bachelor);
         coursesService.save(compSci);
@@ -57,141 +57,141 @@ public class AcademicSystemApplication implements CommandLineRunner {
         var otavioAlcantaraDeLimaJunior = new TeacherModel();
         otavioAlcantaraDeLimaJunior.setName("OTAVIO ALCANTARA DE LIMA JUNIOR");
         otavioAlcantaraDeLimaJunior.setDocumentNumber("46524234545");
-        otavioAlcantaraDeLimaJunior.setBirthDate(LocalDateTime.now());
-        otavioAlcantaraDeLimaJunior.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        otavioAlcantaraDeLimaJunior.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        otavioAlcantaraDeLimaJunior.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(otavioAlcantaraDeLimaJunior);
 
         var fabioJoseGomesDeSousa = new TeacherModel();
         fabioJoseGomesDeSousa.setName("FABIO JOSÉ GOMES DE SOUSA");
         fabioJoseGomesDeSousa.setDocumentNumber("18256605731");
-        fabioJoseGomesDeSousa.setBirthDate(LocalDateTime.now());
-        fabioJoseGomesDeSousa.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        fabioJoseGomesDeSousa.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        fabioJoseGomesDeSousa.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(fabioJoseGomesDeSousa);
 
         var ciceroErialdoOliveiraLima = new TeacherModel();
         ciceroErialdoOliveiraLima.setName("CICERO ERIALDO OLIVEIRA LIMA");
         ciceroErialdoOliveiraLima.setDocumentNumber("23427420370");
-        ciceroErialdoOliveiraLima.setBirthDate(LocalDateTime.now());
-        ciceroErialdoOliveiraLima.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        ciceroErialdoOliveiraLima.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        ciceroErialdoOliveiraLima.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(ciceroErialdoOliveiraLima);
 
         var genilsonGomesDaSilva = new TeacherModel();
         genilsonGomesDaSilva.setName("GENILSON GOMES DA SILVA");
         genilsonGomesDaSilva.setDocumentNumber("73081453364");
-        genilsonGomesDaSilva.setBirthDate(LocalDateTime.now());
-        genilsonGomesDaSilva.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        genilsonGomesDaSilva.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        genilsonGomesDaSilva.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(genilsonGomesDaSilva);
 
         var joaoClaudioNunesCarvalho = new TeacherModel();
         joaoClaudioNunesCarvalho.setName("JOÃO CLAUDIO NUNES CARVALHO");
         joaoClaudioNunesCarvalho.setDocumentNumber("85871113613");
-        joaoClaudioNunesCarvalho.setBirthDate(LocalDateTime.now());
-        joaoClaudioNunesCarvalho.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        joaoClaudioNunesCarvalho.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        joaoClaudioNunesCarvalho.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(joaoClaudioNunesCarvalho);
 
         var joseRodriguesDoNascimentoNeto = new TeacherModel();
         joseRodriguesDoNascimentoNeto.setName("JOSE RODRIGUES DO NASCIMENTO NETO");
         joseRodriguesDoNascimentoNeto.setDocumentNumber("40063711281");
-        joseRodriguesDoNascimentoNeto.setBirthDate(LocalDateTime.now());
-        joseRodriguesDoNascimentoNeto.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        joseRodriguesDoNascimentoNeto.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        joseRodriguesDoNascimentoNeto.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(joseRodriguesDoNascimentoNeto);
 
         var danielSilvaFerreira = new TeacherModel();
         danielSilvaFerreira.setName("DANIEL SILVA FERREIRA");
         danielSilvaFerreira.setDocumentNumber("60544231180");
-        danielSilvaFerreira.setBirthDate(LocalDateTime.now());
-        danielSilvaFerreira.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        danielSilvaFerreira.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        danielSilvaFerreira.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(danielSilvaFerreira);
 
         var carlosHenriqueLeitaoCavalcante = new TeacherModel();
         carlosHenriqueLeitaoCavalcante.setName("CARLOS HENRIQUE LEITÃO CAVALCANTE");
         carlosHenriqueLeitaoCavalcante.setDocumentNumber("43728513407");
-        carlosHenriqueLeitaoCavalcante.setBirthDate(LocalDateTime.now());
-        carlosHenriqueLeitaoCavalcante.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        carlosHenriqueLeitaoCavalcante.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        carlosHenriqueLeitaoCavalcante.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(carlosHenriqueLeitaoCavalcante);
 
         var carlosHenriqueLima = new TeacherModel();
         carlosHenriqueLima.setName("CARLOS HENRIQUE LIMA");
         carlosHenriqueLima.setDocumentNumber("83468857098");
-        carlosHenriqueLima.setBirthDate(LocalDateTime.now());
-        carlosHenriqueLima.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        carlosHenriqueLima.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        carlosHenriqueLima.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(carlosHenriqueLima);
 
         var marcosCirineuAguiarSiqueira = new TeacherModel();
         marcosCirineuAguiarSiqueira.setName("MARCOS CIRINEU AGUIAR SIQUEIRA");
         marcosCirineuAguiarSiqueira.setDocumentNumber("01501061658");
-        marcosCirineuAguiarSiqueira.setBirthDate(LocalDateTime.now());
-        marcosCirineuAguiarSiqueira.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        marcosCirineuAguiarSiqueira.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        marcosCirineuAguiarSiqueira.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(marcosCirineuAguiarSiqueira);
 
         var adrianoTavaresDeFreitas = new TeacherModel();
         adrianoTavaresDeFreitas.setName("ADRIANO TAVARES DE FREITAS");
         adrianoTavaresDeFreitas.setDocumentNumber("88448420845");
-        adrianoTavaresDeFreitas.setBirthDate(LocalDateTime.now());
-        adrianoTavaresDeFreitas.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        adrianoTavaresDeFreitas.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        adrianoTavaresDeFreitas.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(adrianoTavaresDeFreitas);
 
         var igorRafaelSilvaValente = new TeacherModel();
         igorRafaelSilvaValente.setName("IGOR RAFAEL SILVA VALENTE");
         igorRafaelSilvaValente.setDocumentNumber("72648276580");
-        igorRafaelSilvaValente.setBirthDate(LocalDateTime.now());
-        igorRafaelSilvaValente.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        igorRafaelSilvaValente.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        igorRafaelSilvaValente.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(igorRafaelSilvaValente);
 
         var danielAlencarBarrosTavares = new TeacherModel();
         danielAlencarBarrosTavares.setName("DANIEL ALENCAR BARROS TAVARES");
         danielAlencarBarrosTavares.setDocumentNumber("63500582834");
-        danielAlencarBarrosTavares.setBirthDate(LocalDateTime.now());
-        danielAlencarBarrosTavares.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        danielAlencarBarrosTavares.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        danielAlencarBarrosTavares.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(danielAlencarBarrosTavares);
 
         var jeanMarceloDaSilvaMaciel = new TeacherModel();
         jeanMarceloDaSilvaMaciel.setName("JEAN MARCELO DA SILVA MACIEL");
         jeanMarceloDaSilvaMaciel.setDocumentNumber("01574518879");
-        jeanMarceloDaSilvaMaciel.setBirthDate(LocalDateTime.now());
-        jeanMarceloDaSilvaMaciel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        jeanMarceloDaSilvaMaciel.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        jeanMarceloDaSilvaMaciel.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(jeanMarceloDaSilvaMaciel);
 
         var franciscoIcaroMacielForteChaves = new TeacherModel();
         franciscoIcaroMacielForteChaves.setName("FRANCISCO ICARO MACIEL FORTE CHAVES");
         franciscoIcaroMacielForteChaves.setDocumentNumber("12122368152");
-        franciscoIcaroMacielForteChaves.setBirthDate(LocalDateTime.now());
-        franciscoIcaroMacielForteChaves.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        franciscoIcaroMacielForteChaves.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        franciscoIcaroMacielForteChaves.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(franciscoIcaroMacielForteChaves);
 
         var inacioCordeiroAlves = new TeacherModel();
         inacioCordeiroAlves.setName("INACIO CORDEIRO ALVES");
         inacioCordeiroAlves.setDocumentNumber("38658155021");
-        inacioCordeiroAlves.setBirthDate(LocalDateTime.now());
-        inacioCordeiroAlves.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        inacioCordeiroAlves.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        inacioCordeiroAlves.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(inacioCordeiroAlves);
 
         var thiagoAlvesRocha = new TeacherModel();
         thiagoAlvesRocha.setName("THIAGO ALVES ROCHA");
         thiagoAlvesRocha.setDocumentNumber("53058062834");
-        thiagoAlvesRocha.setBirthDate(LocalDateTime.now());
-        thiagoAlvesRocha.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        thiagoAlvesRocha.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        thiagoAlvesRocha.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(thiagoAlvesRocha);
 
         var sandyFerreiraDaCostaBezerra = new TeacherModel();
         sandyFerreiraDaCostaBezerra.setName("SANDY FERREIRA DA COSTA BEZERRA");
         sandyFerreiraDaCostaBezerra.setDocumentNumber("42211840868");
-        sandyFerreiraDaCostaBezerra.setBirthDate(LocalDateTime.now());
-        sandyFerreiraDaCostaBezerra.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        sandyFerreiraDaCostaBezerra.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        sandyFerreiraDaCostaBezerra.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(sandyFerreiraDaCostaBezerra);
 
         var darielsonAraujoDeSouza = new TeacherModel();
         darielsonAraujoDeSouza.setName("DARIELSON ARAÚJO DE SOUZA");
         darielsonAraujoDeSouza.setDocumentNumber("31540778711");
-        darielsonAraujoDeSouza.setBirthDate(LocalDateTime.now());
-        darielsonAraujoDeSouza.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        darielsonAraujoDeSouza.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        darielsonAraujoDeSouza.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(darielsonAraujoDeSouza);
 
         var elderDosSantosTeixeira = new TeacherModel();
         elderDosSantosTeixeira.setName("ELDER DOS SANTOS TEIXEIRA");
         elderDosSantosTeixeira.setDocumentNumber("82335512102");
-        elderDosSantosTeixeira.setBirthDate(LocalDateTime.now());
-        elderDosSantosTeixeira.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        elderDosSantosTeixeira.setBirthDate(LocalDateTime.parse("2023-06-25T19:13"));
+        elderDosSantosTeixeira.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         teachersService.save(elderDosSantosTeixeira);
 
 
@@ -201,7 +201,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         calculoI.setTeacher(franciscoIcaroMacielForteChaves);
         calculoI.setYear(2023);
         calculoI.setSemester(1);
-        calculoI.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        calculoI.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         calculoI.setCourse(compSci);
         disciplinesService.save(calculoI);
 
@@ -210,7 +210,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         circuitosDigitais.setTeacher(otavioAlcantaraDeLimaJunior);
         circuitosDigitais.setYear(2023);
         circuitosDigitais.setSemester(1);
-        circuitosDigitais.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        circuitosDigitais.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         circuitosDigitais.setCourse(compSci);
         disciplinesService.save(circuitosDigitais);
 
@@ -219,7 +219,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         fundamentosDeProgramacao.setTeacher(fabioJoseGomesDeSousa);
         fundamentosDeProgramacao.setYear(2023);
         fundamentosDeProgramacao.setSemester(1);
-        fundamentosDeProgramacao.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        fundamentosDeProgramacao.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         fundamentosDeProgramacao.setCourse(compSci);
         disciplinesService.save(fundamentosDeProgramacao);
 
@@ -228,7 +228,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         matematicaDiscreta.setTeacher(ciceroErialdoOliveiraLima);
         matematicaDiscreta.setYear(2023);
         matematicaDiscreta.setSemester(1);
-        matematicaDiscreta.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        matematicaDiscreta.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         matematicaDiscreta.setCourse(compSci);
         disciplinesService.save(matematicaDiscreta);
 
@@ -237,7 +237,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         algebraLinear.setTeacher(genilsonGomesDaSilva);
         algebraLinear.setYear(2023);
         algebraLinear.setSemester(1);
-        algebraLinear.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        algebraLinear.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         algebraLinear.setCourse(compSci);
         disciplinesService.save(algebraLinear);
 
@@ -246,7 +246,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         fisicaI.setTeacher(joaoClaudioNunesCarvalho);
         fisicaI.setYear(2023);
         fisicaI.setSemester(1);
-        fisicaI.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        fisicaI.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         fisicaI.setCourse(compSci);
         disciplinesService.save(fisicaI);
 
@@ -255,7 +255,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         inglesInstrumental.setTeacher(joseRodriguesDoNascimentoNeto);
         inglesInstrumental.setYear(2023);
         inglesInstrumental.setSemester(1);
-        inglesInstrumental.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        inglesInstrumental.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         inglesInstrumental.setCourse(compSci);
         disciplinesService.save(inglesInstrumental);
 
@@ -264,7 +264,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         laboratorioDeProgramacao.setTeacher(danielSilvaFerreira);
         laboratorioDeProgramacao.setYear(2023);
         laboratorioDeProgramacao.setSemester(1);
-        laboratorioDeProgramacao.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        laboratorioDeProgramacao.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         laboratorioDeProgramacao.setCourse(compSci);
         disciplinesService.save(laboratorioDeProgramacao);
 
@@ -273,7 +273,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         arquiteturaDeComputadores.setTeacher(carlosHenriqueLeitaoCavalcante);
         arquiteturaDeComputadores.setYear(2023);
         arquiteturaDeComputadores.setSemester(1);
-        arquiteturaDeComputadores.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        arquiteturaDeComputadores.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         arquiteturaDeComputadores.setCourse(compSci);
         disciplinesService.save(arquiteturaDeComputadores);
 
@@ -282,7 +282,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         fisicaIi.setTeacher(carlosHenriqueLima);
         fisicaIi.setYear(2023);
         fisicaIi.setSemester(1);
-        fisicaIi.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        fisicaIi.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         fisicaIi.setCourse(compSci);
         disciplinesService.save(fisicaIi);
 
@@ -291,7 +291,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         probabilidadeEEstatistica.setTeacher(marcosCirineuAguiarSiqueira);
         probabilidadeEEstatistica.setYear(2023);
         probabilidadeEEstatistica.setSemester(1);
-        probabilidadeEEstatistica.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        probabilidadeEEstatistica.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         probabilidadeEEstatistica.setCourse(compSci);
         disciplinesService.save(probabilidadeEEstatistica);
 
@@ -300,7 +300,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         programacaoLinear.setTeacher(adrianoTavaresDeFreitas);
         programacaoLinear.setYear(2023);
         programacaoLinear.setSemester(1);
-        programacaoLinear.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        programacaoLinear.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         programacaoLinear.setCourse(compSci);
         disciplinesService.save(programacaoLinear);
 
@@ -309,7 +309,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         programacaoOrientadaAObjeto.setTeacher(igorRafaelSilvaValente);
         programacaoOrientadaAObjeto.setYear(2023);
         programacaoOrientadaAObjeto.setSemester(1);
-        programacaoOrientadaAObjeto.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        programacaoOrientadaAObjeto.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         programacaoOrientadaAObjeto.setCourse(compSci);
         disciplinesService.save(programacaoOrientadaAObjeto);
 
@@ -318,7 +318,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         bancoDeDados.setTeacher(danielAlencarBarrosTavares);
         bancoDeDados.setYear(2023);
         bancoDeDados.setSemester(1);
-        bancoDeDados.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        bancoDeDados.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         bancoDeDados.setCourse(compSci);
         disciplinesService.save(bancoDeDados);
 
@@ -327,7 +327,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         comunicacaoDeDados.setTeacher(jeanMarceloDaSilvaMaciel);
         comunicacaoDeDados.setYear(2023);
         comunicacaoDeDados.setSemester(1);
-        comunicacaoDeDados.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        comunicacaoDeDados.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         comunicacaoDeDados.setCourse(compSci);
         disciplinesService.save(comunicacaoDeDados);
 
@@ -336,7 +336,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         calculoNumerico.setTeacher(franciscoIcaroMacielForteChaves);
         calculoNumerico.setYear(2023);
         calculoNumerico.setSemester(1);
-        calculoNumerico.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        calculoNumerico.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         calculoNumerico.setCourse(compSci);
         disciplinesService.save(calculoNumerico);
 
@@ -345,7 +345,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         estruturaDeDados.setTeacher(inacioCordeiroAlves);
         estruturaDeDados.setYear(2023);
         estruturaDeDados.setSemester(1);
-        estruturaDeDados.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        estruturaDeDados.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         estruturaDeDados.setCourse(compSci);
         disciplinesService.save(estruturaDeDados);
 
@@ -354,7 +354,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         logicaParaComputacao.setTeacher(thiagoAlvesRocha);
         logicaParaComputacao.setYear(2023);
         logicaParaComputacao.setSemester(1);
-        logicaParaComputacao.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        logicaParaComputacao.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         logicaParaComputacao.setCourse(compSci);
         disciplinesService.save(logicaParaComputacao);
 
@@ -363,7 +363,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         analiseDeAlgoritmos.setTeacher(adrianoTavaresDeFreitas);
         analiseDeAlgoritmos.setYear(2023);
         analiseDeAlgoritmos.setSemester(1);
-        analiseDeAlgoritmos.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        analiseDeAlgoritmos.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         analiseDeAlgoritmos.setCourse(compSci);
         disciplinesService.save(analiseDeAlgoritmos);
 
@@ -372,7 +372,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         engenhariaDeSoftware.setTeacher(sandyFerreiraDaCostaBezerra);
         engenhariaDeSoftware.setYear(2023);
         engenhariaDeSoftware.setSemester(1);
-        engenhariaDeSoftware.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        engenhariaDeSoftware.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         engenhariaDeSoftware.setCourse(compSci);
         disciplinesService.save(engenhariaDeSoftware);
 
@@ -381,7 +381,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         grafos.setTeacher(darielsonAraujoDeSouza);
         grafos.setYear(2023);
         grafos.setSemester(1);
-        grafos.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        grafos.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         grafos.setCourse(compSci);
         disciplinesService.save(grafos);
 
@@ -390,7 +390,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         introducaoAEletricidadeEEletronicaParaComputacao.setTeacher(elderDosSantosTeixeira);
         introducaoAEletricidadeEEletronicaParaComputacao.setYear(2023);
         introducaoAEletricidadeEEletronicaParaComputacao.setSemester(1);
-        introducaoAEletricidadeEEletronicaParaComputacao.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        introducaoAEletricidadeEEletronicaParaComputacao.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         introducaoAEletricidadeEEletronicaParaComputacao.setCourse(compSci);
         disciplinesService.save(introducaoAEletricidadeEEletronicaParaComputacao);
 
@@ -399,7 +399,7 @@ public class AcademicSystemApplication implements CommandLineRunner {
         sistemasOperacionais.setTeacher(danielSilvaFerreira);
         sistemasOperacionais.setYear(2023);
         sistemasOperacionais.setSemester(1);
-        sistemasOperacionais.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        sistemasOperacionais.setRegistrationDate(LocalDateTime.parse("2023-06-25T19:13"));
         sistemasOperacionais.setCourse(compSci);
         disciplinesService.save(sistemasOperacionais);
     }
