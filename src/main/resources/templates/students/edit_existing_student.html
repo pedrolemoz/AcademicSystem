@@ -21,7 +21,7 @@
     <form action="/students/edit_existing_student" method="POST">
       <input name="id" type="hidden" th:value="${student.id}" />
       <div class="mb-3">
-        <label class="form-label">Nome do aluno</label>
+        <label class="form-label">Nome do estudante</label>
         <input class="form-control" name="name" type="text" th:value="${student.name}" />
       </div>
       <div class="mb-3">
@@ -35,7 +35,7 @@
           <input class="form-control" name="birthDate" type="datetime-local" min="1900-01-01" max="2050-12-31"
             th:value="${student.birthDate}" />
       </div>
-      <button class="btn btn-primary" type="submit">Editar aluno</button>
+      <button class="btn btn-primary" type="submit">Editar estudante</button>
     </form>
   </div>
 </body>
