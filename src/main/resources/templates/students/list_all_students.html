@@ -41,7 +41,12 @@
           th:href="@{'/students/view_student/'+${student.id}}"
           >Visualizar</a
         >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
+        <a
+          class="btn btn-primary"
+          role="button"
+          th:href="@{'/students/edit_existing_student/'+${student.id}}"
+          >Editar</a
+        >
         <a class="btn btn-primary" role="button" href="#">Deletar</a>
       </li>
     </ul>

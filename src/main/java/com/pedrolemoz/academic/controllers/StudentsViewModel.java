@@ -60,11 +60,48 @@ public class StudentsViewModel {
         return modelAndView;
     }
 
+    @GetMapping("/edit_existing_student/{id}")
+    public ModelAndView editExistingStudentGetRequest(@PathVariable("id") UUID id) {
+        var modelAndView = new ModelAndView("/students/edit_existing_student");
+        Optional<StudentModel> studentModelOptional = studentsService.findById(id);
+
+        if (studentModelOptional.isPresent()) {
+            modelAndView.addObject("student", studentModelOptional.get());
+        } else {
+            modelAndView.setViewName("/error");
+            modelAndView.addObject("errorMessage", "Estudante não encontrado");
+        }
+
+        return modelAndView;
+    }
+
+    @PostMapping("/edit_existing_student")
+    public ModelAndView editExistingStudentPostRequest(StudentDTO studentDTO) {
+        ModelAndView modelAndView = new ModelAndView("/students/list_all_students");
+
+        if (!studentsService.existsByDocumentNumber(studentDTO.getDocumentNumber())) {
+            modelAndView.setViewName("/error");
+            modelAndView.addObject("errorMessage", "Não existe um estudante cadastrado com este CPF");
+            return modelAndView;
+        }
+
+        var studentModel = new StudentModel();
+        studentModel.setId(studentDTO.getUUID());
+        BeanUtils.copyProperties(studentDTO, studentModel);
+        studentModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        studentsService.save(studentModel);
+
+        var students = studentsService.findAll();
+        modelAndView.addObject("students", students);
+
+        return modelAndView;
+    }
+
     @GetMapping("/view_student/{id}")
     public ModelAndView viewStudentGetRequest(@PathVariable("id") UUID id) {
         ModelAndView modelAndView = new ModelAndView("/students/view_student");
         Optional<StudentModel> studentModelOptional = studentsService.findById(id);
-        
+
         if (studentModelOptional.isPresent()) {
             modelAndView.addObject("student", studentModelOptional.get());
         } else {

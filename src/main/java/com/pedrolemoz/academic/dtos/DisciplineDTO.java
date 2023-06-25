@@ -1,15 +1,17 @@
 package com.pedrolemoz.academic.dtos;
 
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.UUID;
 
 @Getter
 @Setter
 public class DisciplineDTO {
+    @Null
+    private String id;
+
     @NotBlank
     @NotEmpty
     private String name;
@@ -21,4 +23,8 @@ public class DisciplineDTO {
     @NotNull
     @Digits(integer = 1, fraction = 0)
     private Integer semester;
+
+    public UUID getUUID() {
+        return UUID.fromString(id);
+    }
 }
