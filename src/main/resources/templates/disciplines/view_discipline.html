@@ -1,100 +1,62 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-    ></script>
-    <title>Sistema Acadêmico</title>
-  </head>
-  <body th:object="${discipline}">
-    <!-- HEADER -->
-    <div th:replace="/header :: header"></div>
-    <!-- BODY -->
-    <div class="justify-content-start d-flex">
-      <div>
-        <h3 data-th-text="${discipline.name}"></h3>
-        <h5
-          data-th-text="|Semestre: ${discipline.year}.${discipline.semester}|"
-        ></h5>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <title>Sistema Acadêmico</title>
+</head>
+
+<body th:object="${discipline}">
+  <!-- HEADER -->
+  <div th:replace="/header :: header"></div>
+  <!-- BODY -->
+  <div class="justify-content-start d-flex">
+    <div>
+      <h3 data-th-text="${discipline.name}"></h3>
+      <h5 data-th-text="|Semestre: ${discipline.year}.${discipline.semester}|"></h5>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editTeacherModal">
+      Editar
+    </button>
+  </div>
+  <div class="justify-content-start d-flex">
+    <h6
+      data-th-text="|Professor: ${discipline.teacher != null ? discipline.teacher.name : 'Nenhum professor atribuído'}|">
+    </h6>
+    <a class="btn btn-primary" role="button" th:if="${discipline.teacher != null}"
+      th:href="@{'/teachers/view_teacher/'+${discipline.teacher.id}}">Visualizar</a>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editTeacherModal">
+      Editar
+    </button>
+  </div>
+  <div class="justify-content-start d-flex">
+    <h6 data-th-text="|Curso: ${discipline.course != null ? discipline.course.name : 'Nenhum curso atribuído'}|"></h6>
+    <a class="btn btn-primary" role="button" th:if="${discipline.course != null}"
+      th:href="@{'/courses/view_course/'+${discipline.course.id}}">Visualizar</a>
+    <a class="btn btn-primary" role="button" href="#">Editar</a>
+  </div>
+  <div class="justify-content-start d-flex">
+    <h4>Alunos</h4>
+    <a class="btn btn-primary" role="button" href="#">Adicionar</a>
+  </div>
+  <h4 th:if="${discipline.students.isEmpty()}">Não há alunos para mostrar</h4>
+  <ul class="list-group" th:if="${!discipline.students.isEmpty()}" data-th-each="student : ${discipline.students}">
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold" data-th-text="${student.name}"></div>
+        <div data-th-text="${student.getFormattedDocumentNumber()}"></div>
       </div>
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#editTeacherModal"
-      >
-        Editar
-      </button>
-    </div>
-    <div class="justify-content-start d-flex">
-      <h6
-        data-th-text="|Professor: ${discipline.teacher != null ? discipline.teacher.name : 'Nenhum professor atribuído'}|"
-      ></h6>
-      <a
-        class="btn btn-primary"
-        role="button"
-        th:if="${discipline.teacher != null}"
-        th:href="@{'/teachers/view_teacher/'+${discipline.teacher.id}}"
-        >Visualizar</a
-      >
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#editTeacherModal"
-      >
-        Editar
-      </button>
-    </div>
-    <div class="justify-content-start d-flex">
-      <h6
-        data-th-text="|Curso: ${discipline.course != null ? discipline.course.name : 'Nenhum curso atribuído'}|"
-      ></h6>
-      <a
-        class="btn btn-primary"
-        role="button"
-        th:if="${discipline.course != null}"
-        th:href="@{'/courses/view_course/'+${discipline.course.id}}"
-        >Visualizar</a
-      >
+      <a class="btn btn-primary" role="button" th:href="@{'/students/view_student/'+${student.id}}">Visualizar</a>
       <a class="btn btn-primary" role="button" href="#">Editar</a>
-    </div>
-    <div class="justify-content-start d-flex">
-      <h4>Alunos</h4>
-      <a class="btn btn-primary" role="button" href="#">Adicionar</a>
-    </div>
-    <h4 th:if="${discipline.students.isEmpty()}">Não há alunos para mostrar</h4>
-    <ul
-      class="list-group"
-      th:if="${!discipline.students.isEmpty()}"
-      data-th-each="student : ${discipline.students}"
-    >
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold" data-th-text="${student.name}"></div>
-          <div data-th-text="${student.getFormattedDocumentNumber()}"></div>
-        </div>
-        <a
-          class="btn btn-primary"
-          role="button"
-          th:href="@{'/students/view_student/'+${student.id}}"
-          >Visualizar</a
-        >
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-    </ul>
-  </body>
+      <a class="btn btn-primary" role="button" href="#">Deletar</a>
+    </li>
+  </ul>
+</body>
+
 </html>
