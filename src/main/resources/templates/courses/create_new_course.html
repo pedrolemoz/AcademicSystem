@@ -17,22 +17,24 @@
   <!-- HEADER -->
   <div th:replace="/header :: header"></div>
   <!-- BODY -->
-  <form action="/courses/create_new_course" method="POST">
-    <div class="mb-3">
-      <label class="form-label">Nome do curso</label>
-      <input class="form-control" name="name" type="text" />
-    </div>
-    <div class="mb-3">
-      <label aria-label="Tipo do curso" class="form-label">Tipo do curso</label>
-      <select aria-label="Default select example" class="form-select" name="degree">
-        <option value="Bachelor">Bacharelado</option>
-        <option value="Licentiate">Licenciatura</option>
-        <option value="Master">Mestrado</option>
-        <option value="Doctorate">Doutorado</option>
-      </select>
-    </div>
-    <button class="btn btn-primary" type="submit">Criar novo curso</button>
-  </form>
+  <div class="container">
+    <form action="/courses/create_new_course" method="POST">
+      <div class="mb-3">
+        <label class="form-label">Nome do curso</label>
+        <input class="form-control" name="name" type="text" />
+      </div>
+      <div class="mb-3">
+        <label aria-label="Tipo do curso" class="form-label">Tipo do curso</label>
+        <select aria-label="Default select example" class="form-select" name="degree">
+          <option value="Bachelor">Bacharelado</option>
+          <option value="Licentiate">Licenciatura</option>
+          <option value="Master">Mestrado</option>
+          <option value="Doctorate">Doutorado</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" type="submit">Criar novo curso</button>
+    </form>
+  </div>
 </body>
 
 </html>

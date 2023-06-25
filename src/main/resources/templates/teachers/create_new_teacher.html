@@ -17,24 +17,26 @@
   <!-- HEADER -->
   <div th:replace="/header :: header"></div>
   <!-- BODY -->
-  <form action="/teachers/create_new_teacher" method="POST">
-    <div class="mb-3">
-      <label class="form-label">Nome do professor</label>
-      <input class="form-control" name="name" type="text" />
-    </div>
-    <div class="mb-3">
-      <label class="form-label">CPF (sem pontos ou dígitos)</label>
-      <input class="form-control" name="documentNumber" type="text" maxlength="11" />
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Data de nascimento</label>
-      <time datetime="YYYY-MM-DDThh:mm:ssTZD">
-        <input class="form-control" name="birthDate" type="datetime-local" min="1900-01-01" max="2050-12-31" />
-    </div>
-    <button class="btn btn-primary" type="submit">
-      Criar novo professor
-    </button>
-  </form>
+  <div class="container">
+    <form action="/teachers/create_new_teacher" method="POST">
+      <div class="mb-3">
+        <label class="form-label">Nome do professor</label>
+        <input class="form-control" name="name" type="text" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">CPF (sem pontos ou dígitos)</label>
+        <input class="form-control" name="documentNumber" type="text" maxlength="11" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Data de nascimento</label>
+        <time datetime="YYYY-MM-DDThh:mm:ssTZD">
+          <input class="form-control" name="birthDate" type="datetime-local" min="1900-01-01" max="2050-12-31" />
+      </div>
+      <button class="btn btn-primary" type="submit">
+        Criar novo professor
+      </button>
+    </form>
+  </div>
 </body>
 
 </html>

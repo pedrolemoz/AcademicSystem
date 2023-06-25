@@ -17,27 +17,29 @@
   <!-- HEADER -->
   <div th:replace="/header :: header"></div>
   <!-- BODY -->
-  <form action="/teachers/edit_existing_teacher" method="POST">
-    <input name="id" type="hidden" th:value="${teacher.id}" />
-    <div class="mb-3">
-      <label class="form-label">Nome do professor</label>
-      <input class="form-control" name="name" type="text" th:value="${teacher.name}" />
-    </div>
-    <div class="mb-3">
-      <label class="form-label">CPF (sem pontos ou dígitos)</label>
-      <input class="form-control" name="documentNumber" type="text" maxlength="11"
-        th:value="${teacher.documentNumber}" />
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Data de nascimento</label>
-      <time datetime="YYYY-MM-DDThh:mm:ssTZD">
-        <input class="form-control" name="birthDate" type="datetime-local" min="1900-01-01" max="2050-12-31"
-          th:value="${teacher.birthDate}" />
-    </div>
-    <button class="btn btn-primary" type="submit">
-      Editar professor
-    </button>
-  </form>
+  <div class="container">
+    <form action="/teachers/edit_existing_teacher" method="POST">
+      <input name="id" type="hidden" th:value="${teacher.id}" />
+      <div class="mb-3">
+        <label class="form-label">Nome do professor</label>
+        <input class="form-control" name="name" type="text" th:value="${teacher.name}" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">CPF (sem pontos ou dígitos)</label>
+        <input class="form-control" name="documentNumber" type="text" maxlength="11"
+          th:value="${teacher.documentNumber}" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Data de nascimento</label>
+        <time datetime="YYYY-MM-DDThh:mm:ssTZD">
+          <input class="form-control" name="birthDate" type="datetime-local" min="1900-01-01" max="2050-12-31"
+            th:value="${teacher.birthDate}" />
+      </div>
+      <button class="btn btn-primary" type="submit">
+        Editar professor
+      </button>
+    </form>
+  </div>
 </body>
 
 </html>

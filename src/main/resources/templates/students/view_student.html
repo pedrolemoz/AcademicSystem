@@ -17,31 +17,33 @@
   <!-- HEADER -->
   <div th:replace="/header :: header"></div>
   <!-- BODY -->
-  <div class="justify-content-start d-flex">
-    <div>
-      <h3 data-th-text="${student.name}"></h3>
-      <h5 data-th-text="${student.getFormattedDocumentNumber()}"></h5>
-    </div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editTeacherModal">
-      Editar
-    </button>
-  </div>
-  <h4>Disciplinas</h4>
-  <h4 th:if="${student.disciplines.isEmpty()}">
-    Não há disciplinas para mostrar
-  </h4>
-  <ul th:if="${!student.disciplines.isEmpty()}" class="list-group" data-th-each="discipline : ${student.disciplines}">
-    <li class="list-group-item d-flex justify-content-between align-items-start">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold" data-th-text="${discipline.name}"></div>
-        <div data-th-text="|Semestre: ${discipline.year}.${discipline.semester}|"></div>
+  <div class="container">
+    <div class="justify-content-start d-flex">
+      <div>
+        <h3 data-th-text="${student.name}"></h3>
+        <h5 data-th-text="${student.getFormattedDocumentNumber()}"></h5>
       </div>
-      <a class="btn btn-primary" role="button"
-        th:href="@{'/disciplines/view_discipline/'+${discipline.id}}">Visualizar</a>
-      <a class="btn btn-primary" role="button" href="#">Editar</a>
-      <a class="btn btn-primary" role="button" href="#">Deletar</a>
-    </li>
-  </ul>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editTeacherModal">
+        Editar
+      </button>
+    </div>
+    <h4>Disciplinas</h4>
+    <h4 th:if="${student.disciplines.isEmpty()}">
+      Não há disciplinas para mostrar
+    </h4>
+    <ul th:if="${!student.disciplines.isEmpty()}" class="list-group" data-th-each="discipline : ${student.disciplines}">
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold" data-th-text="${discipline.name}"></div>
+          <div data-th-text="|Semestre: ${discipline.year}.${discipline.semester}|"></div>
+        </div>
+        <a class="btn btn-primary" role="button"
+          th:href="@{'/disciplines/view_discipline/'+${discipline.id}}">Visualizar</a>
+        <a class="btn btn-primary" role="button" href="#">Editar</a>
+        <a class="btn btn-primary" role="button" href="#">Deletar</a>
+      </li>
+    </ul>
+  </div>
 </body>
 
 </html>
