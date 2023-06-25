@@ -20,8 +20,20 @@
     <!-- HEADER -->
     <div th:replace="/header :: header"></div>
     <!-- BODY -->
-    <h3 data-th-text="${course.name}"></h3>
-    <h5 data-th-text="${course.getDegreeAsString()}"></h5>
+    <div class="justify-content-start d-flex">
+      <div>
+        <h3 data-th-text="${course.name}"></h3>
+        <h5 data-th-text="${course.getDegreeAsString()}"></h5>
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#editTeacherModal"
+      >
+        Editar
+      </button>
+    </div>
     <h4>Disciplinas</h4>
     <h4 th:if="${course.disciplines.isEmpty()}">
       Não há disciplinas para mostrar
@@ -43,7 +55,7 @@
         <a
           class="btn btn-primary"
           role="button"
-          href="/disciplines/view_discipline"
+          th:href="@{'/disciplines/view_discipline/'+${discipline.id}}"
           >Visualizar</a
         >
         <a class="btn btn-primary" role="button" href="#">Editar</a>

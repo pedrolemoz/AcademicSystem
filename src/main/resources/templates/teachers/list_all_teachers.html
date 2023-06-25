@@ -20,7 +20,13 @@
     <!-- HEADER -->
     <div th:replace="/header :: header"></div>
     <!-- BODY -->
-    <ul class="list-group" data-th-each="teacher : ${teachers}">
+    <h4>Professores</h4>
+    <h4 th:if="${teachers.isEmpty()}">Não há professores para mostrar</h4>
+    <ul
+      th:if="${!teachers.isEmpty()}"
+      class="list-group"
+      data-th-each="teacher : ${teachers}"
+    >
       <li
         class="list-group-item d-flex justify-content-between align-items-start"
       >

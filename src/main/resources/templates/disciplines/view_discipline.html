@@ -20,14 +20,33 @@
     <!-- HEADER -->
     <div th:replace="/header :: header"></div>
     <!-- BODY -->
-    <h3 data-th-text="${discipline.name}"></h3>
-    <h5
-      data-th-text="|Semestre: ${discipline.year}.${discipline.semester}|"
-    ></h5>
+    <div class="justify-content-start d-flex">
+      <div>
+        <h3 data-th-text="${discipline.name}"></h3>
+        <h5
+          data-th-text="|Semestre: ${discipline.year}.${discipline.semester}|"
+        ></h5>
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#editTeacherModal"
+      >
+        Editar
+      </button>
+    </div>
     <div class="justify-content-start d-flex">
       <h6
-        data-th-text="|Professor: ${discipline.teacher != null ? discipline.teacher : 'Nenhum professor atribuído'}|"
+        data-th-text="|Professor: ${discipline.teacher != null ? discipline.teacher.name : 'Nenhum professor atribuído'}|"
       ></h6>
+      <a
+        class="btn btn-primary"
+        role="button"
+        th:if="${discipline.teacher != null}"
+        th:href="@{'/teachers/view_teacher/'+${discipline.teacher.id}}"
+        >Visualizar</a
+      >
       <button
         type="button"
         class="btn btn-primary"
@@ -41,6 +60,13 @@
       <h6
         data-th-text="|Curso: ${discipline.course != null ? discipline.course.name : 'Nenhum curso atribuído'}|"
       ></h6>
+      <a
+        class="btn btn-primary"
+        role="button"
+        th:if="${discipline.course != null}"
+        th:href="@{'/courses/view_course/'+${discipline.course.id}}"
+        >Visualizar</a
+      >
       <a class="btn btn-primary" role="button" href="#">Editar</a>
     </div>
     <div class="justify-content-start d-flex">
