@@ -19,7 +19,7 @@
   <!-- BODY -->
   <div class="container">
     <h2 class="py-2">Cursos</h2>
-    <h4 class="py-2" th:if=" ${courses.isEmpty()}">Não há cursos para mostrar</h4>
+    <h4 class="py-2" th:if="${courses.isEmpty()}">Não há cursos para mostrar</h4>
     <div class="d-grid gap-2">
       <div class="container d-flex justify-content-between border rounded-2 p-2" th:if="${!courses.isEmpty()}"
         data-th-each="course : ${courses}">
