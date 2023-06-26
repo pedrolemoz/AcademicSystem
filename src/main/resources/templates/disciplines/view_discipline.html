@@ -48,8 +48,8 @@
     </div>
     <div class="justify-content-start d-flex my-2">
       <h4 class="me-2">Estudantes</h4>
-      <button class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#addStudent"
-        role="button">Adicionar</a>
+      <a class="btn btn-primary mx-2" role="button"
+        th:href="@{'/disciplines/list_students/'+${discipline.id}}">Adicionar</a>
     </div>
     <div class="d-flex justify-content-center align-items-center">
       <p class="h4 pt-5" th:if="${discipline.students.isEmpty()}">Não há estudantes para mostrar</p>

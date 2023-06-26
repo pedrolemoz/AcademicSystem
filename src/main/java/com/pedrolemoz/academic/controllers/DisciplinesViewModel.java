@@ -3,6 +3,7 @@ package com.pedrolemoz.academic.controllers;
 import com.pedrolemoz.academic.dtos.DisciplineDTO;
 import com.pedrolemoz.academic.models.CourseModel;
 import com.pedrolemoz.academic.models.DisciplineModel;
+import com.pedrolemoz.academic.models.StudentModel;
 import com.pedrolemoz.academic.models.TeacherModel;
 import com.pedrolemoz.academic.services.CoursesService;
 import com.pedrolemoz.academic.services.DisciplinesService;
@@ -26,12 +27,16 @@ import java.util.UUID;
 public class DisciplinesViewModel {
     final DisciplinesService disciplinesService;
     final StudentsService studentsService;
-
     final TeachersService teachersService;
     final CoursesService coursesService;
 
 
-    public DisciplinesViewModel(DisciplinesService disciplinesService, StudentsService studentsService, TeachersService teachersService, CoursesService coursesService) {
+    public DisciplinesViewModel(
+            DisciplinesService disciplinesService,
+            StudentsService studentsService,
+            TeachersService teachersService,
+            CoursesService coursesService
+    ) {
         this.disciplinesService = disciplinesService;
         this.studentsService = studentsService;
         this.teachersService = teachersService;
@@ -189,7 +194,6 @@ public class DisciplinesViewModel {
         var disciplineModel = new DisciplineModel();
         BeanUtils.copyProperties(disciplineModelOptional.get(), disciplineModel);
         disciplineModel.setTeacher(teacherModelOptional.get());
-
         disciplinesService.save(disciplineModel);
 
         modelAndView.addObject("discipline", disciplineModel);
@@ -239,7 +243,57 @@ public class DisciplinesViewModel {
         var disciplineModel = new DisciplineModel();
         BeanUtils.copyProperties(disciplineModelOptional.get(), disciplineModel);
         disciplineModel.setCourse(courseModelOptional.get());
+        disciplinesService.save(disciplineModel);
 
+        modelAndView.addObject("discipline", disciplineModel);
+
+        return modelAndView;
+    }
+
+    @GetMapping("/list_students/{id}")
+    public ModelAndView listStudentsGetRequest(@PathVariable("id") UUID id) {
+        ModelAndView modelAndView = new ModelAndView("/disciplines/assign_student_to_discipline");
+        Optional<DisciplineModel> disciplineModelOptional = disciplinesService.findById(id);
+
+        if (disciplineModelOptional.isPresent()) {
+            var students = studentsService.findAll();
+            modelAndView.addObject("discipline", disciplineModelOptional.get());
+            modelAndView.addObject("students", students);
+        } else {
+            modelAndView.setViewName("/error");
+            modelAndView.addObject("errorMessage", "Disciplina não encontrada");
+            return modelAndView;
+        }
+
+        return modelAndView;
+    }
+
+    @GetMapping("/assign_student_to_discipline/{disciplineId}/{studentId}")
+    public ModelAndView assignStudentToDisciplineGetRequest(
+            @PathVariable("disciplineId") UUID disciplineId,
+            @PathVariable("studentId") UUID studentId
+    ) {
+        ModelAndView modelAndView = new ModelAndView("/disciplines/view_discipline");
+        Optional<DisciplineModel> disciplineModelOptional = disciplinesService.findById(disciplineId);
+        Optional<StudentModel> studentModelOptional = studentsService.findById(studentId);
+
+        if (!disciplineModelOptional.isPresent()) {
+            modelAndView.setViewName("/error");
+            modelAndView.addObject("errorMessage", "Disciplina não encontrada");
+            return modelAndView;
+        }
+
+        if (!studentModelOptional.isPresent()) {
+            modelAndView.setViewName("/error");
+            modelAndView.addObject("errorMessage", "Estudante não encontrado");
+            return modelAndView;
+        }
+
+        var disciplineModel = new DisciplineModel();
+        BeanUtils.copyProperties(disciplineModelOptional.get(), disciplineModel);
+        var students = disciplineModelOptional.get().getStudents();
+        students.add(studentModelOptional.get());
+        disciplineModel.setStudents(students);
         disciplinesService.save(disciplineModel);
 
         modelAndView.addObject("discipline", disciplineModel);

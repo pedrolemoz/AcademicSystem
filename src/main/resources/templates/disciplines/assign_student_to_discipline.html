@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Sistema Acadêmico</title>
+</head>
+
+<body class="vh-100">
+    <!-- HEADER -->
+    <div th:replace="/header :: header"></div>
+    <!-- BODY -->
+    <div class="container">
+        <h2 class="py-2">Estudantes</h2>
+        <div class="d-flex justify-content-center align-items-center">
+            <p class="h4 pt-5" th:if="${students.isEmpty()}">Não há estudantes para mostrar</p>
+        </div>
+        <div class="d-grid gap-2">
+            <div class="container d-flex justify-content-between border rounded-2 p-2" th:if="${!students.isEmpty()}"
+                data-th-each="student : ${students}">
+                <div>
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold" data-th-text="${student.name}"></div>
+                        <div data-th-text="${student.getFormattedDocumentNumber()}"></div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-primary mx-1" role="button"
+                        th:href="@{'/disciplines/assign_student_to_discipline/'+${discipline.id}+'/'+${student.id}}">Selecionar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
