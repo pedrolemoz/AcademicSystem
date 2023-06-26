@@ -49,50 +49,27 @@
       <button class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#addStudent"
         role="button">Adicionar</a>
     </div>
-    <h4 th:if="${discipline.students.isEmpty()}">Não há estudantes para mostrar</h4>
-    <ul class="list-group" th:if="${!discipline.students.isEmpty()}" data-th-each="student : ${discipline.students}">
-      <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-          <div class="fw-bold" data-th-text="${student.name}"></div>
-          <div data-th-text="${student.getFormattedDocumentNumber()}"></div>
+    <div class="d-flex justify-content-center align-items-center">
+      <p class="h4 pt-5" th:if="${discipline.students.isEmpty()}">Não há estudantes para mostrar</p>
+    </div>
+    <div class="d-grid gap-2">
+      <div class="container d-flex justify-content-between border rounded-2 p-2"
+        th:if="${!discipline.students.isEmpty()}" data-th-each="student : ${discipline.students}">
+        <div>
+          <div class="ms-2 me-auto">
+            <div class="fw-bold" data-th-text="${student.name}"></div>
+            <div data-th-text="${student.getFormattedDocumentNumber()}"></div>
+          </div>
         </div>
-        <a class="btn btn-primary" role="button" th:href="@{'/students/view_student/'+${student.id}}">Visualizar</a>
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-    </ul>
-  </div>
-
-  <!-- MODAL -->
-  <!-- <div class="modal fade" id="addStudent" tabindex="-1" aria-labelledby="addStudent" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar novo estudante</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-
-          <form th:action="@{/students/assign_student_to_discipline}" method="POST">
-            <input name="id" type="hidden" th:value="${discipline.id}" />
-            <label aria-label="Escolha um aluno" class="form-label">Escolha um aluno</label>
-            <select class="form-select" th:name="selectedStudent">
-              <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.name}">
-              </option>
-            </select>
-            <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">Adicionar aluno</a>
-          </form>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <div class="d-flex align-items-center">
           <a class="btn btn-primary mx-1" role="button"
-            th:href="@{'/disciplines/view_discipline/'+${selectedStudent}}">Adicionar aluno</a>
-
+            th:href="@{'/students/view_student/'+${student.id}}">Visualizar</a>
+          <a class="btn btn-primary mx-1" role="button"
+            th:href="@{'/students/edit_existing_student/'+${student.id}}">Editar</a>
+          <a class="btn btn-primary mx-1" role="button" href="#">Deletar</a>
         </div>
       </div>
     </div>
-  </div> -->
 </body>
 
 </html>

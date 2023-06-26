@@ -28,22 +28,27 @@
         Editar
       </button>
     </div>
-    <h4>Disciplinas</h4>
-    <h4 th:if="${student.disciplines.isEmpty()}">
-      Não há disciplinas para mostrar
-    </h4>
-    <ul th:if="${!student.disciplines.isEmpty()}" class="list-group" data-th-each="discipline : ${student.disciplines}">
-      <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-          <div class="fw-bold" data-th-text="${discipline.name}"></div>
-          <div data-th-text="|Semestre: ${discipline.year}.${discipline.semester}|"></div>
+    <h2 class="py-2">Disciplinas</h2>
+    <div class="d-flex justify-content-center align-items-center">
+      <p class="h4 pt-5" th:if="${student.disciplines.isEmpty()}">Não há disciplinas para mostrar</p>
+    </div>
+    <div class="d-grid gap-2">
+      <div class="container d-flex justify-content-between border rounded-2 p-2"
+        th:if="${!student.disciplines.isEmpty()}" data-th-each="discipline : ${student.disciplines}">
+        <div>
+          <div class="ms-2 me-auto">
+            <div class="fw-bold" data-th-text="${discipline.name}"></div>
+            <div data-th-text="|Semestre: ${discipline.year}.${discipline.semester}|"></div>
+          </div>
         </div>
-        <a class="btn btn-primary" role="button"
-          th:href="@{'/disciplines/view_discipline/'+${discipline.id}}">Visualizar</a>
-        <a class="btn btn-primary" role="button" href="#">Editar</a>
-        <a class="btn btn-primary" role="button" href="#">Deletar</a>
-      </li>
-    </ul>
+        <div class="d-flex align-items-center">
+          <a class="btn btn-primary mx-1" role="button"
+            th:href="@{'/disciplines/view_discipline/'+${discipline.id}}">Visualizar</a>
+          <a class="btn btn-primary mx-1" role="button" href="#">Editar</a>
+          <a class="btn btn-primary mx-1" role="button" href="#">Deletar</a>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 
