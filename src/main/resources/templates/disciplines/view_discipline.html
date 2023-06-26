@@ -34,9 +34,9 @@
       </h4>
       <a class="btn btn-primary mx-2" role="button" th:if="${discipline.teacher != null}"
         th:href="@{'/teachers/view_teacher/'+${discipline.teacher.id}}">Visualizar</a>
-      <button type="button" class="btn btn-primary mx-2">
+      <a type="button" class="btn btn-primary mx-2" th:href="@{'/disciplines/list_teachers/'+${discipline.id}}">
         Editar
-      </button>
+      </a>
     </div>
     <div class="justify-content-start d-flex my-2 align-items-center">
       <h4 class="me-2"
