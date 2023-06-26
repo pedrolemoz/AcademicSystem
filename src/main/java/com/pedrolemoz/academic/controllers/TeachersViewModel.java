@@ -79,24 +79,31 @@ public class TeachersViewModel {
     public ModelAndView editExistingTeacherPostRequest(TeacherDTO teacherDTO) {
         ModelAndView modelAndView = new ModelAndView("/teachers/list_all_teachers");
 
-        if (!teachersService.existsByDocumentNumber(teacherDTO.getDocumentNumber())) {
+        Optional<TeacherModel> teacherModelOptional = teachersService.findById(teacherDTO.getUUID());
+
+        if (!teacherModelOptional.isPresent()) {
             modelAndView.setViewName("/error");
             modelAndView.addObject("errorMessage", "Não existe um professor cadastrado com este CPF");
             return modelAndView;
         }
 
         var teacherModel = new TeacherModel();
-        teacherModel.setId(teacherDTO.getUUID());
         BeanUtils.copyProperties(teacherDTO, teacherModel);
-        teacherModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
-        teachersService.save(teacherModel);
+        teacherModel.setId(teacherModelOptional.get().getId());
+        teacherModel.setRegistrationDate(teacherModelOptional.get().getRegistrationDate());
 
+        var disciplines = teacherModelOptional.get().getDisciplines();
+        if (disciplines != null) {
+            teacherModel.setDisciplines(disciplines);
+        }
+
+        teachersService.save(teacherModel);
+        
         var teachers = teachersService.findAll();
         modelAndView.addObject("teachers", teachers);
 
         return modelAndView;
     }
-
 
     @GetMapping("/view_teacher/{id}")
     public ModelAndView viewTeacherGetRequest(@PathVariable("id") UUID id) {

@@ -80,10 +80,34 @@ public class DisciplinesViewModel {
     public ModelAndView editExistingDisciplinePostRequest(DisciplineDTO disciplineDTO) {
         ModelAndView modelAndView = new ModelAndView("/disciplines/list_all_disciplines");
 
+        Optional<DisciplineModel> disciplineModelOptional = disciplinesService.findById(disciplineDTO.getUUID());
+
+        if (!disciplineModelOptional.isPresent()) {
+            modelAndView.setViewName("/error");
+            modelAndView.addObject("errorMessage", "Disciplina não encontrada");
+            return modelAndView;
+        }
+
         var disciplineModel = new DisciplineModel();
-        disciplineModel.setId(disciplineDTO.getUUID());
         BeanUtils.copyProperties(disciplineDTO, disciplineModel);
-        disciplineModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        disciplineModel.setId(disciplineModelOptional.get().getId());
+        disciplineModel.setRegistrationDate(disciplineModelOptional.get().getRegistrationDate());
+
+        var course = disciplineModelOptional.get().getCourse();
+        if (course != null) {
+            disciplineModel.setCourse(course);
+        }
+
+        var teacher = disciplineModelOptional.get().getTeacher();
+        if (teacher != null) {
+            disciplineModel.setTeacher(teacher);
+        }
+
+        var students = disciplineModelOptional.get().getStudents();
+        if (students != null) {
+            disciplineModel.setStudents(students);
+        }
+
         disciplinesService.save(disciplineModel);
 
         var disciplines = disciplinesService.findAll();
@@ -130,6 +154,7 @@ public class DisciplinesViewModel {
         } else {
             modelAndView.setViewName("/error");
             modelAndView.addObject("errorMessage", "Disciplina não encontrada");
+            return modelAndView;
         }
 
         return modelAndView;
@@ -147,11 +172,13 @@ public class DisciplinesViewModel {
         if (!disciplineModelOptional.isPresent()) {
             modelAndView.setViewName("/error");
             modelAndView.addObject("errorMessage", "Disciplina não encontrada");
+            return modelAndView;
         }
 
         if (!teacherModelOptional.isPresent()) {
             modelAndView.setViewName("/error");
             modelAndView.addObject("errorMessage", "Professor não encontrado");
+            return modelAndView;
         }
 
         var disciplineModel = new DisciplineModel();

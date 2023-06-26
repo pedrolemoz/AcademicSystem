@@ -78,17 +78,24 @@ public class StudentsViewModel {
     @PostMapping("/edit_existing_student")
     public ModelAndView editExistingStudentPostRequest(StudentDTO studentDTO) {
         ModelAndView modelAndView = new ModelAndView("/students/list_all_students");
+        Optional<StudentModel> studentModelOptional = studentsService.findById(studentDTO.getUUID());
 
-        if (!studentsService.existsByDocumentNumber(studentDTO.getDocumentNumber())) {
+        if (!studentModelOptional.isPresent()) {
             modelAndView.setViewName("/error");
             modelAndView.addObject("errorMessage", "Não existe um estudante cadastrado com este CPF");
             return modelAndView;
         }
 
         var studentModel = new StudentModel();
-        studentModel.setId(studentDTO.getUUID());
         BeanUtils.copyProperties(studentDTO, studentModel);
-        studentModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        studentModel.setId(studentModelOptional.get().getId());
+        studentModel.setRegistrationDate(studentModelOptional.get().getRegistrationDate());
+
+        var disciplines = studentModelOptional.get().getDisciplines();
+        if (disciplines != null) {
+            studentModel.setDisciplines(disciplines);
+        }
+
         studentsService.save(studentModel);
 
         var students = studentsService.findAll();
@@ -107,6 +114,7 @@ public class StudentsViewModel {
         } else {
             modelAndView.setViewName("/error");
             modelAndView.addObject("errorMessage", "Estudante não encontrado");
+            return modelAndView;
         }
 
         return modelAndView;

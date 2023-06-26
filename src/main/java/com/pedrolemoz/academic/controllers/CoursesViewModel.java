@@ -66,11 +66,25 @@ public class CoursesViewModel {
     @PostMapping("/edit_existing_course")
     public ModelAndView editExistingCoursePostRequest(CourseDTO courseDTO) {
         ModelAndView modelAndView = new ModelAndView("/courses/list_all_courses");
+        
+        Optional<CourseModel> courseModelOptional = coursesService.findById(courseDTO.getUUID());
+
+        if (!courseModelOptional.isPresent()) {
+            modelAndView.setViewName("/error");
+            modelAndView.addObject("errorMessage", "Curso não encontrado");
+            return modelAndView;
+        }
 
         var courseModel = new CourseModel();
-        courseModel.setId(courseDTO.getUUID());
         BeanUtils.copyProperties(courseDTO, courseModel);
-        courseModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        courseModel.setId(courseModelOptional.get().getId());
+        courseModel.setRegistrationDate(courseModelOptional.get().getRegistrationDate());
+
+        var disciplines = courseModelOptional.get().getDisciplines();
+        if (disciplines != null) {
+            courseModel.setDisciplines(disciplines);
+        }
+
         coursesService.save(courseModel);
 
         var courses = coursesService.findAll();
