@@ -23,12 +23,12 @@
         <h3 data-th-text="${teacher.name}"></h3>
         <h5 data-th-text="${teacher.getFormattedDocumentNumber()}"></h5>
       </div>
-      <button type="button" class="btn btn-primary mx-2 align-self-start" data-bs-toggle="modal"
-        data-bs-target="#editTeacherModal">
+      <a type="button" class="btn btn-primary mx-2 align-self-start"
+        th:href="@{'/teachers/edit_existing_teacher/'+${teacher.id}}">
         Editar
-      </button>
+      </a>
     </div>
-    <h2 class="py-2">Disciplinas</h2>
+    <h2 class=" py-2">Disciplinas</h2>
     <div class="d-flex justify-content-center align-items-center">
       <p class="h4 pt-5" th:if="${teacher.disciplines.isEmpty()}">Não há disciplinas para mostrar</p>
     </div>

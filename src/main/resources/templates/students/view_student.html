@@ -23,9 +23,10 @@
         <h3 data-th-text="${student.name}"></h3>
         <h5 data-th-text="${student.getFormattedDocumentNumber()}"></h5>
       </div>
-      <button type="button" class="btn btn-primary mx-2 align-self-start">
+      <a type="button" class="btn btn-primary mx-2 align-self-start"
+        th:href="@{'/students/edit_existing_student/'+${student.id}}">
         Editar
-      </button>
+      </a>
     </div>
     <h2 class="py-2">Disciplinas</h2>
     <div class="d-flex justify-content-center align-items-center">
