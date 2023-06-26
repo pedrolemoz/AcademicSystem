@@ -18,12 +18,13 @@
   <div th:replace="/header :: header"></div>
   <!-- BODY -->
   <div class="container">
-    <div class="justify-content-start d-flex">
-      <div>
+    <div class="justify-content-start d-flex my-2">
+      <div class="me-2">
         <h3 data-th-text="${student.name}"></h3>
         <h5 data-th-text="${student.getFormattedDocumentNumber()}"></h5>
       </div>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editTeacherModal">
+      <button type="button" class="btn btn-primary mx-2 align-self-start" data-bs-toggle="modal"
+        data-bs-target="#editTeacherModal">
         Editar
       </button>
     </div>
