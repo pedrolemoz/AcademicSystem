@@ -39,6 +39,12 @@ public class AcademicSystemApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        var shouldCreateData = false;
+
+        if (!shouldCreateData) {
+            return;
+        }
+
         var courses = coursesService.findAll();
 
         if (!courses.isEmpty()) {
