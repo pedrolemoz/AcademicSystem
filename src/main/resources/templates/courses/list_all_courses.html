@@ -33,7 +33,8 @@
         </div>
         <div class="d-flex align-items-center">
           <a class="btn btn-primary mx-1" role="button" th:href="@{'/courses/view_course/'+${course.id}}">Visualizar</a>
-          <a class="btn btn-primary mx-1" role="button" href="#">Editar</a>
+          <a class="btn btn-primary mx-1" role="button"
+            th:href="@{'/courses/edit_existing_course/'+${course.id}}">Editar</a>
           <a class="btn btn-primary mx-1" role="button" href="#">Deletar</a>
         </div>
       </div>

@@ -23,10 +23,10 @@
         <h3 data-th-text="${course.name}"></h3>
         <h5 data-th-text="${course.getDegreeAsString()}"></h5>
       </div>
-      <button type="button" class="btn btn-primary mx-2 align-self-start" data-bs-toggle="modal"
-        data-bs-target="#editTeacherModal">
+      <a type="button" class="btn btn-primary mx-2 align-self-start"
+        th:href="@{'/courses/edit_existing_course/'+${course.id}}">
         Editar
-      </button>
+      </a>
     </div>
     <h2 class="py-2">Disciplinas</h2>
     <div class="d-flex justify-content-center align-items-center">
