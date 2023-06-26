@@ -44,7 +44,7 @@
       <a class="btn btn-primary mx-2" role="button" th:if="${discipline.course != null}"
         th:href="@{'/courses/view_course/'+${discipline.course.id}}">Visualizar</a>
       <a class="btn btn-primary mx-2" role="button"
-        th:href="@{'/disciplines/edit_existing_discipline/'+${discipline.id}}">Editar</a>
+        th:href="@{'/disciplines/list_courses/'+${discipline.id}}">Editar</a>
     </div>
     <div class="justify-content-start d-flex my-2">
       <h4 class="me-2">Estudantes</h4>

@@ -1,8 +1,10 @@
 package com.pedrolemoz.academic.controllers;
 
 import com.pedrolemoz.academic.dtos.DisciplineDTO;
+import com.pedrolemoz.academic.models.CourseModel;
 import com.pedrolemoz.academic.models.DisciplineModel;
 import com.pedrolemoz.academic.models.TeacherModel;
+import com.pedrolemoz.academic.services.CoursesService;
 import com.pedrolemoz.academic.services.DisciplinesService;
 import com.pedrolemoz.academic.services.StudentsService;
 import com.pedrolemoz.academic.services.TeachersService;
@@ -26,11 +28,14 @@ public class DisciplinesViewModel {
     final StudentsService studentsService;
 
     final TeachersService teachersService;
+    final CoursesService coursesService;
 
-    public DisciplinesViewModel(DisciplinesService disciplinesService, StudentsService studentsService, TeachersService teachersService) {
+
+    public DisciplinesViewModel(DisciplinesService disciplinesService, StudentsService studentsService, TeachersService teachersService, CoursesService coursesService) {
         this.disciplinesService = disciplinesService;
         this.studentsService = studentsService;
         this.teachersService = teachersService;
+        this.coursesService = coursesService;
     }
 
     @GetMapping("/list_all_disciplines")
@@ -184,6 +189,56 @@ public class DisciplinesViewModel {
         var disciplineModel = new DisciplineModel();
         BeanUtils.copyProperties(disciplineModelOptional.get(), disciplineModel);
         disciplineModel.setTeacher(teacherModelOptional.get());
+
+        disciplinesService.save(disciplineModel);
+
+        modelAndView.addObject("discipline", disciplineModel);
+
+        return modelAndView;
+    }
+
+    @GetMapping("/list_courses/{id}")
+    public ModelAndView listCoursesGetRequest(@PathVariable("id") UUID id) {
+        ModelAndView modelAndView = new ModelAndView("/disciplines/assign_course_to_discipline");
+        Optional<DisciplineModel> disciplineModelOptional = disciplinesService.findById(id);
+
+        if (disciplineModelOptional.isPresent()) {
+            var courses = coursesService.findAll();
+            modelAndView.addObject("discipline", disciplineModelOptional.get());
+            modelAndView.addObject("courses", courses);
+        } else {
+            modelAndView.setViewName("/error");
+            modelAndView.addObject("errorMessage", "Disciplina não encontrada");
+            return modelAndView;
+        }
+
+        return modelAndView;
+    }
+
+    @GetMapping("/assign_course_to_discipline/{disciplineId}/{courseId}")
+    public ModelAndView assignCourseToDisciplineGetRequest(
+            @PathVariable("disciplineId") UUID disciplineId,
+            @PathVariable("courseId") UUID courseId
+    ) {
+        ModelAndView modelAndView = new ModelAndView("/disciplines/view_discipline");
+        Optional<DisciplineModel> disciplineModelOptional = disciplinesService.findById(disciplineId);
+        Optional<CourseModel> courseModelOptional = coursesService.findById(courseId);
+
+        if (!disciplineModelOptional.isPresent()) {
+            modelAndView.setViewName("/error");
+            modelAndView.addObject("errorMessage", "Disciplina não encontrada");
+            return modelAndView;
+        }
+
+        if (!courseModelOptional.isPresent()) {
+            modelAndView.setViewName("/error");
+            modelAndView.addObject("errorMessage", "Curso não encontrado");
+            return modelAndView;
+        }
+
+        var disciplineModel = new DisciplineModel();
+        BeanUtils.copyProperties(disciplineModelOptional.get(), disciplineModel);
+        disciplineModel.setCourse(courseModelOptional.get());
 
         disciplinesService.save(disciplineModel);
 
