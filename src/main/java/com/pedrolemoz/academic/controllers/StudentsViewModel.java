@@ -111,4 +111,15 @@ public class StudentsViewModel {
 
         return modelAndView;
     }
+
+    @GetMapping("/delete_existing_student/{id}")
+    public String deleteStudentGetRequest(@PathVariable("id") UUID id) {
+        Optional<StudentModel> studentModelOptional = studentsService.findById(id);
+
+        if (studentModelOptional.isPresent()) {
+            studentsService.delete(studentModelOptional.get());
+        }
+
+        return "redirect:/students/list_all_students";
+    }
 }

@@ -103,4 +103,15 @@ public class DisciplinesViewModel {
 
         return modelAndView;
     }
+
+    @GetMapping("/delete_existing_discipline/{id}")
+    public String deleteDisciplineGetRequest(@PathVariable("id") UUID id) {
+        Optional<DisciplineModel> disciplineModelOptional = disciplinesService.findById(id);
+
+        if (disciplineModelOptional.isPresent()) {
+            disciplinesService.delete(disciplineModelOptional.get());
+        }
+
+        return "redirect:/disciplines/list_all_disciplines";
+    }
 }

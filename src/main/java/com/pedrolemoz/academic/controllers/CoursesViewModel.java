@@ -2,6 +2,7 @@ package com.pedrolemoz.academic.controllers;
 
 import com.pedrolemoz.academic.dtos.CourseDTO;
 import com.pedrolemoz.academic.models.CourseModel;
+import com.pedrolemoz.academic.models.DisciplineModel;
 import com.pedrolemoz.academic.services.CoursesService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
@@ -91,5 +92,23 @@ public class CoursesViewModel {
         }
 
         return modelAndView;
+    }
+
+    @GetMapping("/delete_existing_course/{id}")
+    public String deleteCourseGetRequest(@PathVariable("id") UUID id) {
+        Optional<CourseModel> courseModelOptional = coursesService.findById(id);
+
+
+        if (courseModelOptional.isPresent()) {
+            var disciplines = courseModelOptional.get().getDisciplines();
+
+            for (DisciplineModel discipline : disciplines) {
+                discipline.setCourse(null);
+            }
+
+            coursesService.delete(courseModelOptional.get());
+        }
+
+        return "redirect:/courses/list_all_courses";
     }
 }

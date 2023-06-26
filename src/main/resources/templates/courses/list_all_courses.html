@@ -35,7 +35,8 @@
           <a class="btn btn-primary mx-1" role="button" th:href="@{'/courses/view_course/'+${course.id}}">Visualizar</a>
           <a class="btn btn-primary mx-1" role="button"
             th:href="@{'/courses/edit_existing_course/'+${course.id}}">Editar</a>
-          <a class="btn btn-primary mx-1" role="button" href="#">Deletar</a>
+          <a class="btn btn-primary mx-1" role="button"
+            th:href="@{'/courses/delete_existing_course/'+${course.id}}">Deletar</a>
         </div>
       </div>
     </div>

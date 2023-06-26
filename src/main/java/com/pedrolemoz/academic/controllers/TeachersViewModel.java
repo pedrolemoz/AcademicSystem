@@ -1,6 +1,7 @@
 package com.pedrolemoz.academic.controllers;
 
 import com.pedrolemoz.academic.dtos.TeacherDTO;
+import com.pedrolemoz.academic.models.DisciplineModel;
 import com.pedrolemoz.academic.models.TeacherModel;
 import com.pedrolemoz.academic.services.TeachersService;
 import org.springframework.beans.BeanUtils;
@@ -110,5 +111,22 @@ public class TeachersViewModel {
         }
 
         return modelAndView;
+    }
+
+    @GetMapping("/delete_existing_teacher/{id}")
+    public String deleteTeacherGetRequest(@PathVariable("id") UUID id) {
+        Optional<TeacherModel> teacherModelOptional = teachersService.findById(id);
+
+        if (teacherModelOptional.isPresent()) {
+            var disciplines = teacherModelOptional.get().getDisciplines();
+
+            for (DisciplineModel discipline : disciplines) {
+                discipline.setTeacher(null);
+            }
+
+            teachersService.delete(teacherModelOptional.get());
+        }
+
+        return "redirect:/teachers/list_all_teachers";
     }
 }
